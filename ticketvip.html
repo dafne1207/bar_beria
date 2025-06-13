@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tu Ticket</title>
+</head>
+<body style="background-color: black; color: white; font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+
+  <h1 style="color: gold;">🎟️ TICKET DE RESERVA</h1>
+  <h2 style="color: white;">Bar-bería Estilo VIP 💈</h2>
+
+  <div style="margin-top: 30px; background-color: #222; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold;">
+    <h2 style="color: gold; font-size: 30px;">PAQUETE VIP ✨</h2>
+    <p style="font-size: 20px;">
+      <strong>Cliente:</strong> <span id="cliente"></span><br>
+      <strong>Barbero:</strong> <span id="barbero"></span><br>
+      <strong>Extras:</strong> <span id="extras"></span><br>
+      <strong>Fecha de cita:</strong> <span id="fecha"></span><br>
+      <strong>Hora de cita:</strong> <span id="hora"></span><br>
+    </p>
+  </div>
+
+  <div style="margin-top: 30px; font-size: 22px; font-family: Arial, sans-serif; color: gold; text-align: center; font-weight: bold;">
+    Gracias por reservar. ¡Nos vemos pronto con estilo! 🍻
+  </div>
+
+  <script>
+    window.onload = function() {
+      let barbero = localStorage.getItem("barbero");
+      let extras = JSON.parse(localStorage.getItem("extras"));
+      let fecha = new Date();
+      let hora = `${fecha.getHours()}:${fecha.getMinutes()}`;
+
+      let citaFecha = new Date();
+      citaFecha.setDate(citaFecha.getDate() + Math.floor(Math.random() * 10));
+
+      document.getElementById("cliente").textContent = `Cliente ${Math.floor(Math.random() * 1000) + 1}`;
+      document.getElementById("barbero").textContent = barbero;
+      document.getElementById("extras").textContent = extras.join(", ");
+      document.getElementById("fecha").textContent = `${citaFecha.toLocaleDateString()} ${citaFecha.toLocaleTimeString()}`;
+      document.getElementById("hora").textContent = hora;
+    }
+  </script>
+
+</body>
+</html>
+
+

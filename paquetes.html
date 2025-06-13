@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Selecciona tu paquete</title>
+</head>
+<body style="margin:0; padding:0; background: url('imagenes/fondo-barberos.jpeg') no-repeat center center fixed; background-size: cover; color: white;">
+
+  <center>
+    <h1>
+      <font face="Lobster" size="7" color="#ad0000">
+        BAR-BERÍA
+      </font><br>
+      <font face="Arial Black" size="5" color="white">
+        <b><u>¡No eres feo, solo te hace falta venir con nosotros!</u></b>
+      </font>
+    </h1>
+
+    <form id="formPaquete">
+      <label>
+        <input type="radio" name="paquete" value="clasico" required hidden>
+        <img src="imagenes/paquete-clasico.png" alt="Clásico" onclick="seleccionar(this)">
+      </label>
+      <br><br>
+
+      <label>
+        <input type="radio" name="paquete" value="premium" hidden>
+        <img src="imagenes/paquete-premium.png" alt="Premium" onclick="seleccionar(this)">
+      </label>
+      <br><br>
+
+      <label>
+        <input type="radio" name="paquete" value="vip" hidden>
+        <img src="imagenes/paquete-vip.png" alt="VIP" onclick="seleccionar(this)">
+      </label>
+      <br><br>
+
+      <button type="submit">
+        <font face="Arial Black" size="5" color="black"> CONTINUAR </font>
+      </button>
+    </form>
+
+    <script>
+      function seleccionar(img) {
+        let imagenes = document.querySelectorAll("form img");
+        imagenes.forEach(imagen => imagen.style.border = "none");
+        img.style.border = "4px solid gold";
+      }
+
+      document.getElementById("formPaquete").addEventListener("submit", function(e) {
+        e.preventDefault(); 
+
+        const paquete = document.querySelector('input[name="paquete"]:checked').value;
+
+        if (paquete === "clasico") {
+          window.location.href = "barbero.html?paquete=clasico";
+        } else if (paquete === "premium") {
+          window.location.href = "barbero_bebida.html?paquete=premium";
+        } else if (paquete === "vip") {
+          window.location.href = "barbero_bebida_extras.html?paquete=vip";
+        }
+      });
+    </script>
+  </center>
+
+</body>
+</html>

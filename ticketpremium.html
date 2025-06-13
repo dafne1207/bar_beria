@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tu Ticket</title>
+</head>
+<body style="background-color: black; color: white; font-family: Arial; text-align: center; padding: 50px;">
+
+  <h1 style="color: gold;">🎟️ TICKET DE RESERVA</h1>
+  <h2 style="color: white;">Bar-bería Estilo VIP 💈</h2>
+
+  <div id="ticket" style="margin-top: 30px; background-color: #222; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 20px gold;">
+    <p><b>Número de cliente:</b> <span id="numero"></span></p>
+    <p><b>Paquete elegido:</b> <span id="paquete">PREMIUM</span></p>
+    <p><b>Barbero seleccionado:</b> <span id="barbero"></span></p>
+    <p><b>Bebida seleccionada:</b> <span id="bebida"></span></p>
+    <p><b>Fecha de tu cita:</b> <span id="fecha"></span></p>
+  </div>
+
+  <p style="margin-top: 30px;">Gracias por reservar. ¡Nos vemos pronto con estilo! 🍻</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const barbero = params.get("barbero") || "No especificado";
+    const bebida = params.get("bebida") || "No especificado";
+
+    const numeroCliente = Math.floor(Math.random() * 90000) + 10000;
+
+    const hoy = new Date();
+    const diasExtra = Math.floor(Math.random() * 10);
+    hoy.setDate(hoy.getDate() + diasExtra);
+    const fechaCita = hoy.toLocaleDateString("es-MX", {
+      day: '2-digit', month: 'long', year: 'numeric'
+    });
+
+    document.getElementById("numero").textContent = numeroCliente;
+    document.getElementById("barbero").textContent = barbero.charAt(0).toUpperCase() + barbero.slice(1);
+    document.getElementById("bebida").textContent = bebida.charAt(0).toUpperCase() + bebida.slice(1);
+    document.getElementById("fecha").textContent = fechaCita;
+  </script>
+
+</body>
+</html>
+
